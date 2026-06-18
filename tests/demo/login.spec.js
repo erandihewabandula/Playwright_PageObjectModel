@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/login';
-import { LogoutPage } from '../../pages/logout';
+//import { LogoutPage } from '../../pages/logout';
 
 
 test('test', async ({ page }) => {
@@ -12,7 +12,7 @@ test('test', async ({ page }) => {
 
   await Login.gotoLoginPage(); // Here we are calling the method to navigate to the login page, which is defined in the Login page class.
   await Login.login('tomsmith', 'SuperSecretPassword!'); // Here we are calling the method to perform the login action, which is defined in the Login page class. We are passing the username and password as parameters to this function, which will be used to fill the username and password fields and click on the login button.
-
+  await Login.verifyLoginSuccessful(); // ✅ Verify login worked
   // await page.goto('https://the-internet.herokuapp.com/login');
   // await page.getByRole('textbox', { name: 'Username' }).click();
   // await page.getByRole('textbox', { name: 'Username' }).fill('tomsmith');
@@ -21,8 +21,8 @@ test('test', async ({ page }) => {
   // await page.getByRole('button', { name: ' Login' }).click();
 
 
-   const Logout = new LogoutPage(page); 
-    await Logout.logout(); 
-    // await page.getByRole('link', { name: 'Logout' }).click();
+  //const Logout = new LogoutPage(page); 
+  //await Logout.logout(); 
+  // await page.getByRole('link', { name: 'Logout' }).click();
 
 });

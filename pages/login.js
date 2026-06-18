@@ -24,11 +24,18 @@ exports.LoginPage = class LoginPage {
         await this.page.goto('https://the-internet.herokuapp.com/login');
     }
 
+
     async login(username, password) { // Instead of hardcoding username or password, as we are passing the username and password to this function, we need to add these as parameters in the function definition.
         await this.username_textbox.fill(username);
         await this.password_textbox.fill(password);
         await this.login_button.click();
     }
+
+    async verifyLoginSuccessful() {
+        // Simple check: verify we're redirected to the secure area (check URL)
+        await this.page.waitForURL('**/secure', { timeout: 5000 });
+    }
+
 
 
     /*

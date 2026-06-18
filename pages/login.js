@@ -12,6 +12,7 @@ exports.LoginPage = class LoginPage {
         this.username_textbox = page.getByRole('textbox', { name: 'Username' })
         this.password_textbox = page.getByRole('textbox', { name: 'Password' })
         this.login_button = page.getByRole('button', { name: ' Login' })
+        //this.logout_button = page.getByRole('link', { name: 'Logout' })  // ← Add this
     }
 
 
@@ -31,10 +32,19 @@ exports.LoginPage = class LoginPage {
         await this.login_button.click();
     }
 
+   // ✅ Simple authentication check method
     async verifyLoginSuccessful() {
         // Simple check: verify we're redirected to the secure area (check URL)
         await this.page.waitForURL('**/secure', { timeout: 5000 });
     }
+
+
+    /*
+    async verifyLoginSuccessful() {
+        await this.logout_button.waitFor({ state: 'visible', timeout: 5000 });
+        // If logout button is visible, user is logged in!
+    }
+    */
 
 
 
